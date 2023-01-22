@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# 检查是否是湘语言文件
+if [ $# -ne 1 ]; then
+    echo "使用方法: $0 <湘语言源文件>"
+    exit 1
+fi
+
+
+cat $1 | sed 's/定义/def/g' \
+    | sed 's/（/(/g' | sed 's/）/)/g' \
+    | sed 's/：/:/g'|sed 's/“/"/g' \
+    |sed 's/”/"/g'|sed 's/讲/print/g' \
+    | python3 
+
+    
